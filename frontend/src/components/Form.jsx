@@ -2,6 +2,7 @@ import React, { useEffect, useState, useReducer } from "react";
 import { useMutation } from "@apollo/client";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import { CREATE_MOVIE, UPDATE_MOVIE } from "../resources/gqlConstants";
 
@@ -111,6 +112,10 @@ const FormMovie = (props) => {
     }
   };
 
+  const removeCharacter = (name) =>{
+    setCharacters(characters.filter(item=>item.name!==name))
+  }
+
   return (
     <>
       <Modal show={props.show} onHide={props.handleClose} size="lg">
@@ -196,7 +201,7 @@ const FormMovie = (props) => {
                   Adicionar
                 </Button>
 
-                <table className="table">
+                <Table hover>
                   <thead>
                     <tr>
                       <th>Personagem</th>
@@ -205,13 +210,13 @@ const FormMovie = (props) => {
                   </thead>
                   <tbody>
                     {characters.map((character) => (
-                      <tr key={character.name}>
+                      <tr key={character.name} onClick={()=>removeCharacter(character.name)}>
                         <td>{character.name}</td>
                         <td>{character.performer}</td>
                       </tr>
                     ))}
                   </tbody>
-                </table>
+                </Table>
               </div>
 
               <Button variant="primary" type="submit" className="w-50">
