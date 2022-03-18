@@ -1,4 +1,4 @@
-#CATÁLOGO
+# CATÁLOGO
 
 Projeto de catálogo criado para realizar as operações CRUD com diferentes tipos de itens. Inicialmente foi implementado o catálogo de filmes.
 
